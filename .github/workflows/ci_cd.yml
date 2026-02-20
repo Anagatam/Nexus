@@ -39,4 +39,4 @@ jobs:
       run: |
         # We execute the offline PyTest suite specifically to avoid hitting yfinance 
         # external API rate-limit bans via the github runners.
-        python -m pytest tests/
+        PYTHONPATH=. python -m pytest tests/
