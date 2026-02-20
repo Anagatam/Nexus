@@ -263,12 +263,12 @@ class NexusVisualizer:
         ax.set_facecolor('#0d1117')
         
         from matplotlib.colors import LinearSegmentedColormap
-        # Custom dark/light violet palette
-        colors = ["#4a00e0", "#0d1117", "#b388ff"]
-        cmap = LinearSegmentedColormap.from_list("custom_violet", colors)
+        # 5-stop high-saturation custom violet palette to eliminate dull mid-tones
+        colors = ["#4d0099", "#26004d", "#0d1117", "#b333ff", "#e699ff"]
+        cmap = LinearSegmentedColormap.from_list("vibrant_violet", colors)
         
         sns.heatmap(heatmap_data, annot=True, fmt=".1%", cmap=cmap, center=0.0,
-                    linewidths=0.5, linecolor='#30363d', cbar=False, ax=ax,
+                    linewidths=1.5, linecolor='#0d1117', cbar=False, ax=ax,
                     mask=heatmap_data.isnull(),
                     annot_kws={"weight": "bold", "size": 10})
         
