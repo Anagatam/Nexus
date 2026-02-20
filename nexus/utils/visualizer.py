@@ -262,11 +262,14 @@ class NexusVisualizer:
         fig.patch.set_facecolor('#0d1117')
         ax.set_facecolor('#0d1117')
         
-        # Purple/Violet diverging palette
-        cmap = sns.diverging_palette(260, 290, s=80, l=55, as_cmap=True, center="dark")
+        from matplotlib.colors import LinearSegmentedColormap
+        # Custom dark/light violet palette
+        colors = ["#4a00e0", "#0d1117", "#b388ff"]
+        cmap = LinearSegmentedColormap.from_list("custom_violet", colors)
         
         sns.heatmap(heatmap_data, annot=True, fmt=".1%", cmap=cmap, center=0.0,
                     linewidths=0.5, linecolor='#30363d', cbar=False, ax=ax,
+                    mask=heatmap_data.isnull(),
                     annot_kws={"weight": "bold", "size": 10})
         
         ax.set_title(f"Monthly Returns: {asset_name}", fontsize=16, fontweight='bold', color='white', pad=15)
