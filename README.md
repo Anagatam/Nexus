@@ -25,8 +25,10 @@ Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abs
 ---
 
 ## Table of contents
+- [Why Nexus?](#why-nexus)
 - [Getting started](#getting-started)
 - [Features & Mathematical Supremacy](#features--mathematical-supremacy)
+  - [Return Regimes & Asset Efficiency](#return-regimes--asset-efficiency)
   - [Multivariate Dynamics & Temporal Regimes](#multivariate-dynamics--temporal-regimes)
   - [Dispersion & Volatility](#dispersion--volatility)
   - [Downside Asymmetry](#downside-asymmetry)
@@ -37,6 +39,16 @@ Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abs
 - [Installation](#-installation)
 - [Testing & Developer Setup](#testing--developer-setup)
 - [License & Disclaimer](#license)
+
+---
+
+## Why Nexus?
+
+While excellent open-source libraries like `PyPortfolioOpt` and `Riskfolio-Lib` exist, **Nexus** was explicitly engineered for absolute scale and mathematical extremity.
+
+1. **Convex Entropic Supremacy**: Standard libraries rely on empirical Historical VaR or CVaR. Nexus natively implements **Entropic Value at Risk (EVaR)** and **Relativistic VaR (RLVaR)**, bounding tail risks using strict Chernoff inequalities that are completely invisible to standard historical sampling.
+2. **Path-Dependent Drawdown Cones**: Nexus introduces **Entropic Drawdown at Risk (EDaR)**, a revolutionary metric mapping underwater geometric capital erosion onto exponential mathematically-bound cones, rather than just simple peak-to-trough calculations.
+3. **Dynamic Solver Fallbacks**: Nexus detects institutional optimization licenses (MOSEK/GUROBI) and perfectly routes extreme thermodynamics through them via `cvxpy`. If licenses are missing, it flawlessly falls back to high-grade `scipy` optimizers without crashing your analytical pipeline.
 
 ---
 
@@ -96,6 +108,23 @@ Calmar Ratio               0.884100
 ## Features & Mathematical Supremacy
 
 In this section, we detail Nexus' primary architectural pillars. More exhaustive equations can be found in our core modules.
+
+### Return Regimes & Asset Efficiency
+Institutional portfolio management relies on hierarchical clustering of temporal returns and risk-adjusted efficiency plotting.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/monthly_heatmap.png" alt="Monthly Return Heatmap" width="800">
+</p>
+
+- **Chronological Return Clustering**: QuantStats-style Y/M grids isolating momentum drifts, tax-loss harvesting impacts, and macro-regime seasonality across annual structures.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/risk_return_scatter.png" alt="Risk vs Return Efficiency" width="800">
+</p>
+
+- **Asset Efficiency Hierarchies**: Volatility vs. Return distributions mapping exactly which singular assets dominate the local efficient frontier.
+
+---
 
 ### Multivariate Dynamics & Temporal Regimes
 Understanding how risks evolve over time and across asset classes is paramount. Nexus natively maps high-dimensional data flows into temporal matrices, detecting structural regime shifts before they breach limits.

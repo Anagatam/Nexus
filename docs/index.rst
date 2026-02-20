@@ -12,6 +12,7 @@ Nexus is an institutional-grade library implementing 40+ advanced risk measureme
    :caption: Table of Contents:
 
    getting_started
+   architecture
    analyzer
    data
    mathematics
