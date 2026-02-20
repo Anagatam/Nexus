@@ -16,7 +16,6 @@ Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abs
 | **CI/CD**     | [![CI/CD Validation](https://img.shields.io/badge/build-passing-brightgreen?logo=github&logoColor=white)](#) [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](#) |
 | **Code**      | [![PyPI](https://img.shields.io/badge/pypi-v2.0.0-orange)](#) [![Python Versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python&logoColor=white)](#) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](#) |
 | **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-85%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-340%2Fmonth-brightgreen)](#) [![Cumulative](https://img.shields.io/badge/cumulative_(pypi)-1.2k-blue)](#) |
-| **Citation**  | **[JOSS article](#)** |
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/risk_manifold.png" alt="Nexus Risk Manifold" width="800">
