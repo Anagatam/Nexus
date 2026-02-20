@@ -14,7 +14,7 @@ Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abs
 | **Tutorials** | [![Binder](https://img.shields.io/badge/launch-binder-blue)](#) |
 | **Community** | [![Discord](https://img.shields.io/badge/discord-chat-46BC99)](#) [![LinkedIn](https://img.shields.io/badge/LinkedIn-news-blue)](#) |
 | **CI/CD**     | [![CI/CD Validation](https://img.shields.io/badge/build-passing-brightgreen?logo=github&logoColor=white)](#) [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](https://nexus-the-enterprise-quantitative-risk-framework.readthedocs.io/en/latest/) |
-| **Code**      | [![PyPI](https://img.shields.io/badge/pypi-v2.0.0-orange)](https://pypi.org/project/nexus-quant/) [![Python Versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python&logoColor=white)](#) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](#) |
+| **Code**      | [![PyPI](https://img.shields.io/badge/pypi-v2.0.1-orange)](https://pypi.org/project/nexus-quant/) [![Python Versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python&logoColor=white)](#) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](#) |
 | **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-85%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-340%2Fmonth-brightgreen)](#) [![Cumulative](https://img.shields.io/badge/cumulative_(pypi)-1.2k-blue)](#) |
 
 <p align="center">

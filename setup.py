@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="nexus-quant",
-    version="2.0.0",
+    version="2.0.1",
     author="Nexus Quantitative Architect",
     author_email="architect@nexus-quant.com",
     description="The world's most elegant, institutional-grade quantitative risk API.",
