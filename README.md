@@ -29,6 +29,7 @@ Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abs
 ## Table of contents
 - [Getting started](#getting-started)
 - [Features & Mathematical Supremacy](#features--mathematical-supremacy)
+  - [Multivariate Dynamics & Temporal Regimes](#multivariate-dynamics--temporal-regimes)
   - [Dispersion & Volatility](#dispersion--volatility)
   - [Downside Asymmetry](#downside-asymmetry)
   - [Tail Exceedance](#tail-exceedance)
@@ -97,6 +98,20 @@ Calmar Ratio               0.884100
 ## Features & Mathematical Supremacy
 
 In this section, we detail Nexus' primary architectural pillars. More exhaustive equations can be found in our core modules.
+
+### Multivariate Dynamics & Temporal Regimes
+Understanding how risks evolve over time and across asset classes is paramount. Nexus natively maps high-dimensional data flows into temporal matrices, detecting structural regime shifts before they breach limits.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/rolling_risk.png" alt="Rolling Risk Regimes" width="800">
+</p>
+
+- **Rolling Structural Volatility**: Maps moving-window variance structures directly against overlapping 95% Historical VaR clusters, instantly revealing structural macro-regime changes.
+- **Cross-Asset Covariance & Pearson Dependencies**: Instantly maps deep empirical correlation heatmaps to guarantee zero concentration overlaps across distinct asset silos (Equities, Bonds, Crypto, Commodities).
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/correlation_heatmap.png" alt="Cross-Asset Correlation" width="600">
+</p>
 
 ### Dispersion & Volatility
 - **Standard Deviation & Variance**: The classical unbiased measures of historical risk.

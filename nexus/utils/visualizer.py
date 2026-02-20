@@ -157,6 +157,82 @@ class NexusVisualizer:
         plt.close()
 
 
+    @staticmethod
+    def render_correlation_heatmap(
+        returns_df: pd.DataFrame, 
+        output_path: str = "docs/assets/correlation_heatmap.png"
+    ):
+        """
+        Renders an institutional cross-asset correlation matrix heatmap.
+        """
+        sns.set_theme(style="darkgrid")
+        plt.style.use("dark_background")
+        
+        fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
+        fig.patch.set_facecolor('#0d1117')
+        ax.set_facecolor('#0d1117')
+        
+        # Calculate Pearson Correlation
+        corr = returns_df.corr()
+        
+        # Mask upper triangle
+        mask = np.triu(np.ones_like(corr, dtype=bool))
+        
+        sns.heatmap(corr, mask=mask, cmap="mako", annot=True, fmt=".2f", 
+                    linewidths=0.5, linecolor='#30363d', cbar_kws={"shrink": .8}, ax=ax)
+        
+        ax.set_title("Cross-Asset Correlation Matrix", fontsize=16, fontweight='bold', color='white', pad=15)
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
+        
+        plt.tight_layout()
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
+        print(f"Correlation Heatmap saved to: {output_path}")
+        plt.close()
+
+    @staticmethod
+    def render_rolling_risk(
+        returns: pd.Series, 
+        window: int = 63,
+        asset_name: str = "Portfolio",
+        output_path: str = "docs/assets/rolling_risk.png"
+    ):
+        """
+        Renders rolling risk regimes contrasting Volatility against Empirical VaR over time.
+        """
+        sns.set_theme(style="darkgrid")
+        plt.style.use("dark_background")
+        
+        fig, ax = plt.subplots(figsize=(10, 5), dpi=300)
+        fig.patch.set_facecolor('#0d1117')
+        ax.set_facecolor('#0d1117')
+
+        # Calculate Rolling Annualized Volatility (assuming daily)
+        rolling_vol = returns.rolling(window=window).std() * np.sqrt(252)
+        
+        ax.plot(rolling_vol.index, rolling_vol, color="#00f2fe", linewidth=2, label=f"{window}-Day Volatility (Ann.)")
+        ax.fill_between(rolling_vol.index, rolling_vol, 0, color="#00f2fe", alpha=0.1)
+        
+        # Calculate Rolling Empirical VaR directly
+        rolling_var = returns.rolling(window=window).quantile(0.05) * -np.sqrt(252)
+        ax.plot(rolling_var.index, rolling_var, color="#fe0060", linewidth=1.5, linestyle="--", label=f"{window}-Day VaR (95%)")
+
+        ax.set_title(f"Dynamic Risk Regimes: {asset_name}", fontsize=16, fontweight='bold', color='white', pad=15)
+        ax.set_ylabel("Annualized Risk Equivalent", fontsize=12, color='white')
+        ax.tick_params(axis='y', labelcolor="white")
+        ax.tick_params(axis='x', labelcolor="white")
+        ax.grid(color='#30363d', linestyle='-', linewidth=0.5)
+        
+        plt.legend(facecolor='#161b22', edgecolor='#30363d', labelcolor='white', loc='upper left')
+        
+        fig.tight_layout()
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
+        print(f"Rolling Risk graph saved to: {output_path}")
+        plt.close()
+
+
 if __name__ == "__main__":
     from nexus.analytics.analyzer import NexusAnalyzer
     
@@ -185,3 +261,21 @@ if __name__ == "__main__":
     }
     
     NexusVisualizer.render_tail_risk_comparison(tail_metrics)
+    
+    # 4. Correlation Heatmap
+    dates = pd.date_range(start="2020-01-01", periods=1080, freq="B")
+    df_sim = pd.DataFrame({
+        "Equities": np.random.normal(0.0005, 0.012, 1080),
+        "Bonds": np.random.normal(0.0001, 0.004, 1080),
+        "Commodities": np.random.normal(0.0003, 0.015, 1080),
+        "Crypto": np.random.normal(0.0020, 0.040, 1080)
+    }, index=dates)
+    
+    # Induce artificial correlation
+    df_sim["Equities"] = df_sim["Equities"] * 0.7 + df_sim["Crypto"] * 0.3
+    
+    NexusVisualizer.render_correlation_heatmap(df_sim)
+    
+    # 5. Rolling Risk
+    portfolio_sim = df_sim.sum(axis=1) / 4
+    NexusVisualizer.render_rolling_risk(portfolio_sim, asset_name="Multi-Asset Portfolio")
