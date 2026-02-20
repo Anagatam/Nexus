@@ -37,6 +37,6 @@ jobs:
         
     - name: Execute Mathematical Test Suite
       run: |
-        # Note: If no pytest files yet, we execute the demo script natively 
-        # as a structural system validation check.
-        python run_nexus_demo.py
+        # We execute the offline PyTest suite specifically to avoid hitting yfinance 
+        # external API rate-limit bans via the github runners.
+        python -m pytest tests/
