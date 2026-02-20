@@ -181,7 +181,7 @@ class NexusVisualizer:
         mask = np.triu(np.ones_like(corr, dtype=bool))
         
         sns.heatmap(corr, mask=mask, cmap="mako", annot=True, fmt=".2f", 
-                    linewidths=0.5, linecolor='#30363d', cbar_kws={"shrink": .8}, ax=ax)
+                    linewidths=1.5, linecolor='#0d1117', cbar_kws={"shrink": .8}, ax=ax)
         
         ax.set_title("Cross-Asset Correlation Matrix", fontsize=16, fontweight='bold', color='white', pad=15)
         ax.tick_params(axis='x', colors='white')
@@ -362,12 +362,12 @@ if __name__ == "__main__":
     NexusVisualizer.render_tail_risk_comparison(tail_metrics)
     
     # 4. Correlation Heatmap
-    dates = pd.date_range(start="2020-01-01", periods=1080, freq="B")
+    dates = pd.date_range(start="2020-01-01", periods=1305, freq="B")
     df_sim = pd.DataFrame({
-        "Equities": np.random.normal(0.0005, 0.012, 1080),
-        "Bonds": np.random.normal(0.0001, 0.004, 1080),
-        "Commodities": np.random.normal(0.0003, 0.015, 1080),
-        "Crypto": np.random.normal(0.0020, 0.040, 1080)
+        "Equities": np.random.normal(0.0005, 0.012, 1305),
+        "Bonds": np.random.normal(0.0001, 0.004, 1305),
+        "Commodities": np.random.normal(0.0003, 0.015, 1305),
+        "Crypto": np.random.normal(0.0020, 0.040, 1305)
     }, index=dates)
     
     # Induce artificial correlation
