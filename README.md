@@ -15,7 +15,7 @@ Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abs
 | **Community** | [![Discord](https://img.shields.io/badge/discord-chat-46BC99)](#) [![LinkedIn](https://img.shields.io/badge/LinkedIn-news-blue)](#) |
 | **CI/CD**     | [![CI/CD Validation](https://img.shields.io/badge/build-passing-brightgreen?logo=github&logoColor=white)](#) [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](#) |
 | **Code**      | [![PyPI](https://img.shields.io/badge/pypi-v2.0.0-orange)](#) [![Python Versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python&logoColor=white)](#) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](#) |
-| **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-23k%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-104k%2Fmonth-brightgreen)](#) [![Cumulative](https://img.shields.io/badge/cumulative_(pypi)-3M-blue)](#) |
+| **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-85%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-340%2Fmonth-brightgreen)](#) [![Cumulative](https://img.shields.io/badge/cumulative_(pypi)-1.2k-blue)](#) |
 | **Citation**  | **[JOSS article](#)** |
 
 <p align="center">
