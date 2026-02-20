@@ -272,6 +272,8 @@ class NexusVisualizer:
                     mask=heatmap_data.isnull(),
                     annot_kws={"weight": "bold", "size": 10})
         
+        ax.grid(False)
+        
         ax.set_title(f"Monthly Returns: {asset_name}", fontsize=16, fontweight='bold', color='white', pad=15)
         ax.tick_params(axis='x', colors='white')
         ax.tick_params(axis='y', colors='white', rotation=0)
