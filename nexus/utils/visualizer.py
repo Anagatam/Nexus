@@ -167,7 +167,7 @@ class NexusVisualizer:
         """
         Renders an institutional cross-asset correlation matrix heatmap.
         """
-        sns.set_theme(style="darkgrid")
+        sns.set_theme(style="dark")
         plt.style.use("dark_background")
         
         fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
@@ -243,7 +243,7 @@ class NexusVisualizer:
         """
         Renders an institutional monthly returns heatmap (QuantStats style).
         """
-        sns.set_theme(style="darkgrid")
+        sns.set_theme(style="dark")
         plt.style.use("dark_background")
         
         if not isinstance(returns.index, pd.DatetimeIndex):
