@@ -70,16 +70,118 @@ class NexusVisualizer:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
         print(f"Institutional graph saved to: {output_path}")
+    @staticmethod
+    def render_drawdown_underwater(
+        returns: np.ndarray, 
+        asset_name: str = "Portfolio",
+        output_path: str = "docs/assets/drawdown_topography.png"
+    ):
+        """
+        Renders a Bloomberg-style cumulative return line paired with an 
+        underwater drawdown waterfall filled area.
+        """
+        sns.set_theme(style="darkgrid")
+        plt.style.use("dark_background")
+        
+        fig, ax1 = plt.subplots(figsize=(10, 5), dpi=300)
+        fig.patch.set_facecolor('#0d1117')
+        ax1.set_facecolor('#0d1117')
+
+        # Calculate geometric compounding and drawdowns
+        clean_returns = returns.flatten()
+        cum_returns = np.cumprod(1 + clean_returns)
+        running_max = np.maximum.accumulate(cum_returns)
+        drawdown = (cum_returns - running_max) / running_max
+
+        # Plot Cumulative Returns
+        ax1.plot(cum_returns, color="#00f2fe", linewidth=2, label=f"Cumulative {asset_name}")
+        ax1.set_ylabel("Wealth Index", color="#00f2fe", fontsize=12)
+        ax1.tick_params(axis='y', labelcolor="#00f2fe")
+
+        # Plot Drawdown Underwater
+        ax2 = ax1.twinx()
+        ax2.fill_between(range(len(drawdown)), drawdown, 0, color="#fe0060", alpha=0.3, label="Drawdown Waterfall")
+        ax2.plot(drawdown, color="#fe0060", linewidth=1.5)
+        ax2.set_ylabel("Drawdown (%)", color="#fe0060", fontsize=12)
+        ax2.tick_params(axis='y', labelcolor="#fe0060")
+
+        # Formatting
+        plt.title(f"Drawdown Topography: {asset_name}", fontsize=16, fontweight='bold', color='white', pad=15)
+        ax1.grid(color='#30363d', linestyle='-', linewidth=0.5)
+        
+        fig.tight_layout()
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
+        print(f"Institutional drawdown graph saved to: {output_path}")
         plt.close()
 
+    @staticmethod
+    def render_tail_risk_comparison(
+        metrics_dict: dict,
+        output_path: str = "docs/assets/tail_risk_metrics.png"
+    ):
+        """
+        Renders a bar chart comparing Empirical VaR vs CVaR vs Convex EVaR.
+        """
+        sns.set_theme(style="darkgrid")
+        plt.style.use("dark_background")
+        
+        fig, ax = plt.subplots(figsize=(8, 5), dpi=300)
+        fig.patch.set_facecolor('#0d1117')
+        ax.set_facecolor('#0d1117')
+
+        labels = list(metrics_dict.keys())
+        values = list(metrics_dict.values())
+        
+        # Color gradient for increasing extremity
+        colors = ["#ffb703", "#fb8500", "#fe0060"]
+
+        bars = ax.bar(labels, values, color=colors, alpha=0.9, width=0.5)
+        
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate(f'{height:.2%}',
+                        xy=(bar.get_x() + bar.get_width() / 2, height),
+                        xytext=(0, 3),  
+                        textcoords="offset points",
+                        ha='center', va='bottom', color='white', fontweight='bold')
+
+        ax.set_title("Extreme Tail Convexity Breakdown (95%)", fontsize=16, fontweight='bold', color='white', pad=15)
+        ax.set_ylabel("Maximum Capital Loss Exposure", fontsize=12, color='white')
+        ax.grid(color='#30363d', linestyle='-', linewidth=0.5, axis='y')
+        
+        plt.tight_layout()
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
+        print(f"Tail risk comparison graph saved to: {output_path}")
+        plt.close()
+
+
 if __name__ == "__main__":
-    # Simulate a stylized leptokurtic return stream (fat tails)
+    from nexus.analytics.analyzer import NexusAnalyzer
+    
     np.random.seed(42)
-    # Mixture of two normals to create a heavy-tailed distribution matching real markets
     normal_days = np.random.normal(0.0005, 0.01, 1000)
     crash_days = np.random.normal(-0.02, 0.04, 50)
     boom_days = np.random.normal(0.02, 0.03, 30)
     
     simulated_returns = np.concatenate([normal_days, crash_days, boom_days])
     
+    # 1. Manifold Plot
     NexusVisualizer.render_distribution_manifold(simulated_returns, asset_name="Simulated Global Equities")
+    
+    # 2. Drawdown Plot
+    NexusVisualizer.render_drawdown_underwater(simulated_returns, asset_name="Simulated Global Equities")
+    
+    # 3. Tail Risk Comparison via Analyzer
+    analyzer = NexusAnalyzer()
+    analyzer.calibrate(simulated_returns)
+    analyzer.compute(alpha=0.05)
+    
+    tail_metrics = {
+        "Empirical VaR": analyzer.fetch('Value at Risk (0.05)')[0],
+        "Conditional VaR": analyzer.fetch('Cond VaR (0.05)')[0],
+        "Entropic VaR": analyzer.fetch('Entropic VaR (0.05)')[0]
+    }
+    
+    NexusVisualizer.render_tail_risk_comparison(tail_metrics)

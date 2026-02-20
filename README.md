@@ -108,10 +108,18 @@ In this section, we detail Nexus' primary architectural pillars. More exhaustive
 - **Semi-Deviation**: A measure of risk that focuses purely on downside variation heavily penalized by investors.
 - **Lower Partial Moments (LPM)**: Generalized objective functions for asymmetric downside measurements parameterized by target acceptable return (`MAR`).
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/drawdown_topography.png" alt="Nexus Drawdown Topography" width="800">
+</p>
+
 ### Tail Exceedance
 - **Value at Risk (VaR)**: The industry-standard empirical percentile of the maximum loss over a targeted confidence interval $\alpha$.
 - **Conditional VaR (CVaR/Expected Shortfall)**: The expected loss *given* that the VaR threshold has been breached. Structurally coherent.
 - **Tail Gini**: A unique generalized formulation merging CVaR with Gini mean difference within extreme domains.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/tail_risk_metrics.png" alt="Extreme Tail Convexity Breakdown" width="800">
+</p>
 
 ### Convex Entropic Bounds
 - **Entropic Value at Risk (EVaR)**: The tightest coherent upper bound on VaR historically derived strictly from the Chernoff inequality. Extremely responsive to extreme market shocks.
