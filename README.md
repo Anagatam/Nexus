@@ -8,12 +8,12 @@ Welcome to **Nexus**. Nexus is an institutional-grade library implementing 40+ a
 
 Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abstracts disjointed mathematical scripts into a devastatingly powerful execution manifold: the **`NexusAnalyzer`**. Whether you are an indie quant building alpha models who has identified undervalued opportunities, or a Wall Street hedge fund requiring millisecond precision optimizations via MOSEK/CVXPY, Nexus provides the native mathematical infrastructure needed to evaluate and construct risk-efficient portfolios.
 
-|               | **[Documentation](https://nexus-quant.readthedocs.io/en/latest/) · [Tutorials](#) · [Release Notes](#)** |
+|               | **[Documentation](https://nexus-the-enterprise-quantitative-risk-framework.readthedocs.io/en/latest/) · [Tutorials](#) · [Release Notes](#)** |
 |:--------------|:-------------------------------------------------------------|
 | **Open Source**| [![License: MIT](https://img.shields.io/badge/license-MIT-yellowgreen)](#) [![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey)](#) |
 | **Tutorials** | [![Binder](https://img.shields.io/badge/launch-binder-blue)](#) |
 | **Community** | [![Discord](https://img.shields.io/badge/discord-chat-46BC99)](#) [![LinkedIn](https://img.shields.io/badge/LinkedIn-news-blue)](#) |
-| **CI/CD**     | [![CI/CD Validation](https://img.shields.io/badge/build-passing-brightgreen?logo=github&logoColor=white)](#) [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](https://nexus-quant.readthedocs.io/en/latest/) |
+| **CI/CD**     | [![CI/CD Validation](https://img.shields.io/badge/build-passing-brightgreen?logo=github&logoColor=white)](#) [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](https://nexus-the-enterprise-quantitative-risk-framework.readthedocs.io/en/latest/) |
 | **Code**      | [![PyPI](https://img.shields.io/badge/pypi-v2.0.0-orange)](https://pypi.org/project/nexus-quant/) [![Python Versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python&logoColor=white)](#) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](#) |
 | **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-85%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-340%2Fmonth-brightgreen)](#) [![Cumulative](https://img.shields.io/badge/cumulative_(pypi)-1.2k-blue)](#) |
 
@@ -48,7 +48,7 @@ Nexus is built with the rigor and scale of Tier-1 technology groups (such as Dee
 
 For an exhaustive and mathematically rigorous breakdown of our architectural patterns, Entropic bounds, solver routing algorithms, and a complete API reference, please consult the official ReadTheDocs portal:
 
-**[📖 Read the Full Documentation on ReadTheDocs ➔](https://nexus-quant.readthedocs.io/en/latest/)**
+**[📖 Read the Full Documentation on ReadTheDocs ➔](https://nexus-the-enterprise-quantitative-risk-framework.readthedocs.io/en/latest/)**
 
 The documentation deeply covers:
 - **Core Architecture & The Analyzer Facade**
