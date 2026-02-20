@@ -20,6 +20,10 @@
 
 **Nexus** is a mathematically exhaustive, institutional-grade quantitative risk architecture. Built on the elegance of Google's core paradigms and the `scikit-learn` Facade pattern, Nexus replaces convoluted functional scripts with a single, devastatingly powerful execution manifold: the `NexusAnalyzer`.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/risk_manifold.png" alt="Nexus Risk Manifold" width="800">
+</p>
+
 Nexus calculates **18+ high-level risk measurements** concurrently, featuring everything from fundamental statistical moments to extreme dual-tracked 3D-Power Cone deformations (Relativistic VaR).
 
 ### Unparalleled Solver Routing
