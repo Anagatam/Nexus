@@ -1,0 +1,16 @@
+# Core Mathematical Engines
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+
+# Data Fetching
+yfinance>=0.2.18
+
+# --- Optional Enterprise Solvers ---
+# cvxpy>=1.3.0
+# mosek>=10.0.0
+
+# --- Development & Formatting ---
+# pytest
+# flake8
+# black

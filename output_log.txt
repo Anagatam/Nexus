@@ -1,0 +1,35 @@
+1. Fetching Market Data...
+
+=============================================
+     NEXUS ENTERPRISE RISK ENGINE v2.0       
+=============================================
+
+--- Architectural Execution via Facade ---
+Calibrating Institutional Portfolio Data...
+Executing Exhaustive Mathematical Verification...
+
+                            Asset_0
+Volatility (Ann)           0.230763
+Mean Abs Dev (MAD)         2.388695
+Gini Mean Diff             3.579301
+L-Scale                    1.788463
+Semi-Deviation             0.164741
+Lower Part Moment (LPM1)   1.096828
+Value at Risk (0.05)       0.019100
+Cond VaR (0.05)            0.033262
+Entropic VaR (0.05)        0.067949
+Tail Gini (0.05)           0.049885
+VaR Range (0.05)           0.038800
+Max Loss (Worst Case)      0.126017
+Max Drawdown (MDD)        -0.337989
+Cond DaR (0.05)           -0.232770
+Entropic DaR (0.05)        0.259398
+Ulcer Index                0.094862
+Calmar Ratio               0.683327
+Skewness                   0.101511
+Excess Kurtosis           15.615579
+
+=============================================
+System Validation Complete. Nexus v2.0 Live.
+=============================================
+
