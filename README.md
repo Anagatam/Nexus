@@ -4,21 +4,19 @@
 
 # Nexus: The Enterprise Quantitative Risk Framework
 
-<p align="center">
-  <img src="https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python&logoColor=white" alt="Python Versions">
-  <img src="https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey" alt="Platform">
-  <a href="https://pypi.org/project/nexus-quant/"><img src="https://img.shields.io/badge/pypi-v2.0.0-orange" alt="PyPI"></a>
-  <a href="https://github.com/Anagatam/Nexus/actions"><img src="https://img.shields.io/badge/CI%2FCD%20Validation-passing-brightgreen?logo=github&logoColor=white" alt="CI/CD Validation"></a>
-  <img src="https://img.shields.io/badge/docs-passing-brightgreen" alt="Docs">
-  <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style">
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-yellowgreen" alt="License: MIT"></a>
-</p>
-
 Welcome to **Nexus**. Nexus is an institutional-grade library implementing 40+ advanced risk measurements, including classical metrics, downside asymmetry, tail exceedance, and convex entropic bounds (EVaR, EDaR, RLDaR). 
 
 Inspired by `scikit-learn` and Google's core architectures, Nexus seamlessly abstracts disjointed mathematical scripts into a devastatingly powerful execution manifold: the **`NexusAnalyzer`**. Whether you are an indie quant building alpha models who has identified undervalued opportunities, or a Wall Street hedge fund requiring millisecond precision optimizations via MOSEK/CVXPY, Nexus provides the native mathematical infrastructure needed to evaluate and construct risk-efficient portfolios.
 
-**[Documentation](#) · [Tutorials](#) · [Release Notes](#)**
+|               | **[Documentation](#) · [Tutorials](#) · [Release Notes](#)** |
+|:--------------|:-------------------------------------------------------------|
+| **Open Source**| [![License: MIT](https://img.shields.io/badge/license-MIT-yellowgreen)](#) [![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey)](#) |
+| **Tutorials** | [![Binder](https://img.shields.io/badge/launch-binder-blue)](#) |
+| **Community** | [![Discord](https://img.shields.io/badge/discord-chat-46BC99)](#) [![LinkedIn](https://img.shields.io/badge/LinkedIn-news-blue)](#) |
+| **CI/CD**     | [![CI/CD Validation](https://img.shields.io/badge/build-passing-brightgreen?logo=github&logoColor=white)](#) [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](#) |
+| **Code**      | [![PyPI](https://img.shields.io/badge/pypi-v2.0.0-orange)](#) [![Python Versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python&logoColor=white)](#) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](#) |
+| **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-23k%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-104k%2Fmonth-brightgreen)](#) [![Cumulative](https://img.shields.io/badge/cumulative_(pypi)-3M-blue)](#) |
+| **Citation**  | **[JOSS article](#)** |
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/risk_manifold.png" alt="Nexus Risk Manifold" width="800">
