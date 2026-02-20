@@ -1,4 +1,6 @@
 import os
+import calendar
+import datetime
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -232,6 +234,98 @@ class NexusVisualizer:
         print(f"Rolling Risk graph saved to: {output_path}")
         plt.close()
 
+    @staticmethod
+    def render_monthly_returns_heatmap(
+        returns: pd.Series,
+        asset_name: str = "Portfolio",
+        output_path: str = "docs/assets/monthly_heatmap.png"
+    ):
+        """
+        Renders an institutional monthly returns heatmap (QuantStats style).
+        """
+        sns.set_theme(style="darkgrid")
+        plt.style.use("dark_background")
+        
+        if not isinstance(returns.index, pd.DatetimeIndex):
+            returns.index = pd.date_range(end=datetime.date.today(), periods=len(returns), freq='B')
+            
+        monthly_ret = returns.resample('ME').apply(lambda x: (1 + x).prod() - 1)
+        heatmap_data = monthly_ret.groupby([monthly_ret.index.year, monthly_ret.index.month]).sum().unstack()
+        heatmap_data.columns = [calendar.month_abbr[i] for i in heatmap_data.columns]
+        heatmap_data.index.name = "Year"
+        
+        yearly_ret = returns.resample('YE').apply(lambda x: (1 + x).prod() - 1)
+        yearly_ret.index = yearly_ret.index.year
+        heatmap_data['YTD'] = yearly_ret
+        
+        fig, ax = plt.subplots(figsize=(10, max(4, len(heatmap_data) * 0.8 + 2)), dpi=300)
+        fig.patch.set_facecolor('#0d1117')
+        ax.set_facecolor('#0d1117')
+        
+        # Purple/Violet diverging palette
+        cmap = sns.diverging_palette(260, 290, s=80, l=55, as_cmap=True, center="dark")
+        
+        sns.heatmap(heatmap_data, annot=True, fmt=".1%", cmap=cmap, center=0.0,
+                    linewidths=0.5, linecolor='#30363d', cbar=False, ax=ax,
+                    annot_kws={"weight": "bold", "size": 10})
+        
+        ax.set_title(f"Monthly Returns: {asset_name}", fontsize=16, fontweight='bold', color='white', pad=15)
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white', rotation=0)
+        ax.set_ylabel("")
+        
+        plt.tight_layout()
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
+        print(f"Monthly Heatmap saved to: {output_path}")
+        plt.close()
+
+    @staticmethod
+    def render_risk_return_scatter(
+        returns_df: pd.DataFrame,
+        output_path: str = "docs/assets/risk_return_scatter.png"
+    ):
+        """
+        Renders a risk (volatility) vs. return scatter plot for multiple assets.
+        """
+        sns.set_theme(style="darkgrid")
+        plt.style.use("dark_background")
+        
+        fig, ax = plt.subplots(figsize=(10, 6), dpi=300)
+        fig.patch.set_facecolor('#0d1117')
+        ax.set_facecolor('#0d1117')
+        
+        ann_return = (1 + returns_df.mean())**252 - 1
+        ann_vol = returns_df.std() * np.sqrt(252)
+        
+        ax.scatter(ann_vol, ann_return, color="#00f2fe", edgecolors="white", s=100, alpha=0.9, zorder=5)
+        
+        for i, txt in enumerate(returns_df.columns):
+            ax.annotate(txt, (ann_vol.iloc[i], ann_return.iloc[i]), 
+                       xytext=(8, 8), textcoords='offset points', 
+                       color='white', fontsize=11, weight='bold')
+                       
+        if len(returns_df.columns) > 1:
+            z = np.polyfit(ann_vol, ann_return, 1)
+            p = np.poly1d(z)
+            ax.plot(ann_vol, p(ann_vol), color="#fe0060", linestyle="--", alpha=0.5, linewidth=2, zorder=4)
+        
+        ax.set_title("Asset Efficiency: Risk vs. Return", fontsize=16, fontweight='bold', color='white', pad=15)
+        ax.set_xlabel("Annualized Risk (Volatility)", fontsize=12, color='white')
+        ax.set_ylabel("Annualized Return", fontsize=12, color='white')
+        
+        ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.1%}'))
+        ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.1%}'))
+        
+        ax.tick_params(colors='white')
+        ax.grid(color='#30363d', linestyle='-', linewidth=0.5, zorder=0)
+        
+        plt.tight_layout()
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
+        print(f"Risk-Return Scatter saved to: {output_path}")
+        plt.close()
+
 
 if __name__ == "__main__":
     from nexus.analytics.analyzer import NexusAnalyzer
@@ -279,3 +373,9 @@ if __name__ == "__main__":
     # 5. Rolling Risk
     portfolio_sim = df_sim.sum(axis=1) / 4
     NexusVisualizer.render_rolling_risk(portfolio_sim, asset_name="Multi-Asset Portfolio")
+    
+    # 6. Monthly Returns Heatmap
+    NexusVisualizer.render_monthly_returns_heatmap(portfolio_sim, asset_name="Multi-Asset Portfolio")
+    
+    # 7. Risk-Return Scatter
+    NexusVisualizer.render_risk_return_scatter(df_sim)
