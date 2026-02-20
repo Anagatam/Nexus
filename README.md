@@ -136,7 +136,7 @@ Understanding how risks evolve over time and across asset classes is paramount. 
 - **Cross-Asset Covariance & Pearson Dependencies**: Instantly maps deep empirical correlation heatmaps to guarantee zero concentration overlaps across distinct asset silos (Equities, Bonds, Crypto, Commodities).
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/correlation_heatmap.png" alt="Cross-Asset Correlation" width="600">
+  <img src="https://raw.githubusercontent.com/Anagatam/Nexus/main/docs/assets/correlation_heatmap.png?v=2" alt="Cross-Asset Correlation" width="600">
 </p>
 
 ### Dispersion & Volatility
