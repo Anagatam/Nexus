@@ -180,7 +180,7 @@ class NexusVisualizer:
         # Mask upper triangle
         mask = np.triu(np.ones_like(corr, dtype=bool))
         
-        sns.heatmap(corr, mask=mask, cmap="mako", annot=True, fmt=".2f", 
+        sns.heatmap(corr, mask=mask, cmap="rocket", annot=True, fmt=".2f", 
                     linewidths=1.5, linecolor='#0d1117', cbar_kws={"shrink": .8}, ax=ax)
         
         ax.set_title("Cross-Asset Correlation Matrix", fontsize=16, fontweight='bold', color='white', pad=15)
